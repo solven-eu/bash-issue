@@ -1,0 +1,21 @@
+version: 2.1 # use CircleCI 2.0
+
+jobs: # a collection of steps
+    investigate_bash:
+    steps:
+      - setup_remote_docker:
+          # https://stackoverflow.com/questions/67505628/circleci-build-of-meteor-2-2-docker-application-failing
+          # https://support.circleci.com/hc/en-us/articles/360050934711
+          version: 19.03.13
+      - checkout
+      - run:
+          command: |
+            echo 'docker run -it node:14.18.2-alpine sh'
+            echo 'apk --no-cache add bash'
+            echo 'bash'
+            echo 'type -a npm'
+
+workflows:
+  investigate_bash:
+    jobs:
+      - investigate_bash
