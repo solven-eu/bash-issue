@@ -1,7 +1,11 @@
 version: 2.1 # use CircleCI 2.0
 
 jobs: # a collection of steps
-    investigate_bash:
+  investigate_bash:
+    docker:
+      # See: https://circleci.com/developer/images/image/cimg/openjdk
+      # org.codehaus.gmaven:gmaven-plugin needs JDK 11.
+      - image: cimg/openjdk:11.0.13
     steps:
       - setup_remote_docker:
           # https://stackoverflow.com/questions/67505628/circleci-build-of-meteor-2-2-docker-application-failing
@@ -16,6 +20,6 @@ jobs: # a collection of steps
             echo 'type -a npm'
 
 workflows:
-  investigate_bash:
+  do_it:
     jobs:
       - investigate_bash
