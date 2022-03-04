@@ -15,8 +15,9 @@ jobs: # a collection of steps
       - run:
           command: |
             docker exec -it node:14.18.2-alpine bash -c "bash --version"
-            docker exec -it node:14.18.2-alpine sh -c "apk --no-cache add bash"
+            docker exec -it node:14.18.2-alpine sh   -c "apk --no-cache add bash"
             docker exec -it node:14.18.2-alpine bash -c "bash --version"
+            docker exec -it node:14.18.2-alpine sh   -c "type -a npm"
             docker exec -it node:14.18.2-alpine bash -c "type -a npm"
 
 workflows:
